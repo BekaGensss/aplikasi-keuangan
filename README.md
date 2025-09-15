@@ -79,7 +79,7 @@ Mulai Mencatat: Gunakan menu navigasi untuk mulai mencatat pemasukan dan pengelu
 Proyek ini dilisensikan di bawah Lisensi MIT (MIT License). Lihat file LICENSE untuk detailnya.
 
 Setelah Anda membuat file `README.md` dan menempelkan isinya, jangan lupa untuk mengunggahnya ke GitHub dengan perintah berikut:
-```bash
+bash
 git add README.md
 git commit -m "Add README file with license and icons"
 git push origin main
