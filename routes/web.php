@@ -17,7 +17,8 @@ Route::get('/', function () {
 });
 
 // Rute untuk Dashboard dengan filter tanggal
-Route::get('/dashboard/{month?}/{year?}', [KeuanganController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+// Tambahkan middleware 'verified' di sini
+Route::get('/dashboard/{month?}/{year?}', [KeuanganController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/export/transactions', [KeuanganController::class, 'exportTransactions'])->middleware('auth')->name('export.transactions');
 
 // Rute untuk Mengatur Saldo Awal, dilindungi oleh auth
@@ -54,5 +55,41 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Rute untuk autentikasi yang sudah kita modifikasi
+Route::middleware('auth')->group(function () {
+    // Rute untuk menguji halaman konfirmasi kata sandi
+    Route::get('/area-sensitif', function () {
+        return "Ini adalah area sensitif!";
+    })->middleware(['auth', 'password.confirm']);
+
+    Route::get('/confirm-password', function () {
+        return view('auth.confirm-password');
+    })->name('password.confirm');
+    
+    Route::post('/confirm-password', function (Illuminate\Http\Request $request) {
+        $request->validate([
+            'password' => ['required', 'string'],
+        ]);
+        
+        if (! Auth::guard('web')->validate(['email' => $request->user()->email, 'password' => $request->password])) {
+            return back()->withErrors([
+                'password' => __('auth.password'),
+            ]);
+        }
+        
+        $request->session()->passwordConfirmed();
+        
+        return redirect()->intended('/dashboard');
+    });
+
+    Route::get('/verify-email', function () {
+        return view('auth.verify-email');
+    })->name('verification.notice');
+});
+
+Route::get('/reset-password/{token}', function ($token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->name('password.reset');
 
 require __DIR__.'/auth.php';

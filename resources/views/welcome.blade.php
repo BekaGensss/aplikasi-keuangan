@@ -6,6 +6,16 @@
     <title>Aplikasi Keuangan</title>
     @vite('resources/css/app.css')
     <style>
+        /* Mengatur latar belakang halaman */
+        body {
+            /* Pastikan path gambar sudah benar */
+            background-image: url("{{ asset('images/wp-keuangan.png') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
         /* Animasi kustom */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -31,20 +41,22 @@
             animation: slideInRight 0.8s ease-out forwards;
         }
         
-        /* Gaya untuk partikel */
-        #particles-js {
+        /* Overlay untuk membuat teks lebih mudah dibaca di atas gambar */
+        .overlay {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            z-index: 1;
+            /* Mengurangi transparansi overlay agar gambar latar belakang lebih terlihat */
+            background-color: rgba(255, 255, 255, 0.5); /* Nilai 0.5 membuat gambar 50% terlihat */
+            z-index: 1; /* Z-index yang lebih rendah agar tidak menutupi konten utama */
         }
     </style>
 </head>
-<body class="antialiased bg-white text-gray-900 flex flex-col min-h-screen relative">
+<body class="antialiased text-gray-900 flex flex-col min-h-screen relative">
     
-    <div id="particles-js"></div>
+    <div class="overlay"></div>
     
     <header class="fixed top-0 right-0 p-8 z-30 animate-slideInRight">
         @if (Route::has('login'))
@@ -69,8 +81,7 @@
         @endif
     </header>
 
-    <main class="flex-grow flex items-center justify-center p-8 z-20 relative">
-        <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+    <main class="flex-grow flex items-center justify-center p-8 relative z-20"> <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center z-30">
             
             <div class="animate-slideInLeft p-4">
                 <h1 class="text-6xl md:text-7xl font-extrabold leading-tight mb-4">
@@ -119,116 +130,5 @@
             </div>
         </div>
     </main>
-    
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": {
-                        "value": 80,
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
-                        }
-                    },
-                    "color": {
-                        "value": "#9ca3af"
-                    },
-                    "shape": {
-                        "type": "circle",
-                        "stroke": {
-                            "width": 0,
-                            "color": "#9ca3af"
-                        },
-                        "polygon": {
-                            "nb_sides": 5
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.6,
-                        "random": false,
-                        "anim": {
-                            "enable": false,
-                            "speed": 1,
-                            "opacity_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "size": {
-                        "value": 2.5,
-                        "random": true,
-                        "anim": {
-                            "enable": false,
-                            "speed": 40,
-                            "size_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "line_linked": {
-                        "enable": true,
-                        "distance": 180,
-                        "color": "#9ca3af",
-                        "opacity": 0.5,
-                        "width": 1.5
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 4,
-                        "direction": "none",
-                        "random": false,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": false,
-                            "rotateX": 600,
-                            "rotateY": 1200
-                        }
-                    }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": true,
-                            "mode": "grab"
-                        },
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push"
-                        },
-                        "resize": true
-                    },
-                    "modes": {
-                        "grab": {
-                            "distance": 140,
-                            "line_linked": {
-                                "opacity": 0.5
-                            }
-                        },
-                        "bubble": {
-                            "distance": 400,
-                            "size": 40,
-                            "duration": 2,
-                            "opacity": 8,
-                            "speed": 3
-                        },
-                        "repulse": {
-                            "distance": 200,
-                            "duration": 0.4
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        },
-                        "remove": {
-                            "particles_nb": 2
-                        }
-                    }
-                },
-                "retina_detect": true
-            });
-        });
-    </script>
 </body>
 </html>

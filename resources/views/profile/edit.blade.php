@@ -3,36 +3,43 @@
 @section('title', 'Profil')
 
 @section('content')
-    <h1 class="text-2xl font-bold mb-4">Profil Pengguna</h1>
+    <div class="space-y-8 p-4 md:p-8">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">
+                Profil Pengguna
+            </h1>
+            <p class="mt-2 text-lg text-gray-500">
+                Kelola informasi akun Anda dan lihat ringkasan keuangan.
+            </p>
+        </div>
 
-    <div class="space-y-6">
-        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-            <div class="max-w-xl">
+        <div class="rounded-2xl bg-white p-6 shadow-xl transition-all duration-300 hover:shadow-2xl">
+            <div class="max-w-3xl mx-auto">
                 <section>
                     <header>
-                        <h2 class="text-lg font-medium text-gray-900">
-                            {{ __('Ringkasan Keuangan Anda') }}
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">
+                            Ringkasan Keuangan Anda
                         </h2>
-                        <p class="mt-1 text-sm text-gray-600">
-                            {{ __("Berikut adalah ringkasan keuangan total dari seluruh riwayat Anda.") }}
+                        <p class="mt-1 text-sm text-gray-500">
+                            Berikut adalah ringkasan keuangan total dari seluruh riwayat Anda.
                         </p>
                     </header>
-                    <div class="mt-6 space-y-4">
-                        <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
-                            <span class="font-bold text-gray-700">Saldo Total</span>
-                            <span class="text-xl font-bold @if($keuangan['saldo_total'] >= 0) text-blue-600 @else text-red-600 @endif">
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="flex flex-col items-center justify-center p-6 rounded-lg border border-gray-200">
+                            <span class="text-lg font-medium text-gray-500">Saldo Total</span>
+                            <span class="text-3xl font-bold mt-2 @if($keuangan['saldo_total'] >= 0) text-blue-600 @else text-red-600 @endif">
                                 Rp{{ number_format($keuangan['saldo_total'], 0, ',', '.') }}
                             </span>
                         </div>
-                        <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
-                            <span class="font-bold text-gray-700">Total Pemasukan</span>
-                            <span class="text-xl font-bold text-green-600">
+                        <div class="flex flex-col items-center justify-center p-6 rounded-lg border border-gray-200">
+                            <span class="text-lg font-medium text-gray-500">Total Pemasukan</span>
+                            <span class="text-3xl font-bold mt-2 text-green-600">
                                 Rp{{ number_format($keuangan['total_pemasukan'], 0, ',', '.') }}
                             </span>
                         </div>
-                        <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
-                            <span class="font-bold text-gray-700">Total Pengeluaran</span>
-                            <span class="text-xl font-bold text-red-600">
+                        <div class="flex flex-col items-center justify-center p-6 rounded-lg border border-gray-200">
+                            <span class="text-lg font-medium text-gray-500">Total Pengeluaran</span>
+                            <span class="text-3xl font-bold mt-2 text-red-600">
                                 Rp{{ number_format($keuangan['total_pengeluaran'], 0, ',', '.') }}
                             </span>
                         </div>
@@ -41,20 +48,20 @@
             </div>
         </div>
         
-        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-            <div class="max-w-xl">
+        <div class="rounded-2xl bg-white p-6 shadow-xl transition-all duration-300 hover:shadow-2xl">
+            <div class="max-w-3xl mx-auto">
                 @include('profile.partials.update-profile-information-form')
             </div>
         </div>
 
-        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-            <div class="max-w-xl">
+        <div class="rounded-2xl bg-white p-6 shadow-xl transition-all duration-300 hover:shadow-2xl">
+            <div class="max-w-3xl mx-auto">
                 @include('profile.partials.update-password-form')
             </div>
         </div>
 
-        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-            <div class="max-w-xl">
+        <div class="rounded-2xl bg-white p-6 shadow-xl transition-all duration-300 hover:shadow-2xl">
+            <div class="max-w-3xl mx-auto">
                 @include('profile.partials.delete-user-form')
             </div>
         </div>
