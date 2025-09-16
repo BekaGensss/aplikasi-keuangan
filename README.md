@@ -1,66 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📈 Aplikasi Perencanaan Keuangan Pribadi
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel v9.x](https://img.shields.io/badge/Laravel-9.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP v8.1+](https://img.shields.io/badge/PHP-8.1+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0+-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 
-## About Laravel
+Aplikasi web sederhana untuk membantu pengguna mencatat pemasukan dan pengeluaran, serta membuat anggaran bulanan. Aplikasi ini dilengkapi dengan visualisasi data yang menarik untuk memudahkan analisis keuangan pribadi.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Fitur Utama
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   **Dashboard Interaktif**: Menampilkan ringkasan keuangan, grafik pengeluaran per kategori, dan aliran kas bulanan.
+-   **Manajemen Transaksi**: Fitur lengkap **CRUD** (Create, Read, Update, Delete) untuk mencatat pemasukan dan pengeluaran.
+-   **Sistem Anggaran**: Pengguna dapat menetapkan anggaran bulanan untuk setiap kategori pengeluaran dan mendapatkan notifikasi jika batas terlampaui.
+-   **Manajemen Saldo Awal**: Pengguna dapat mengatur saldo awal mereka melalui antarmuka web.
+-   **Ekspor Data**: Tersedia fitur untuk mengunduh semua riwayat transaksi dalam format CSV.
+-   **Autentikasi Pengguna**: Aplikasi ini dilindungi dengan sistem login dan register yang aman (menggunakan Laravel Breeze).
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🚀 Teknologi
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   **Framework**: Laravel 9+
+-   **Bahasa**: PHP 8.1+
+-   **Database**: MySQL
+-   **Frontend**: Tailwind CSS, Blade Templates, JavaScript (Chart.js)
+-   **Lingkungan Pengembangan**: Laragon
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🛠️ Cara Instalasi
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek di lingkungan lokal Anda.
 
-### Premium Partners
+### 1. Klon Repositori
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```bash
+git clone [https://github.com/BekaGensss/aplikasi-keuangan.git](https://github.com/BekaGensss/aplikasi-keuangan.git)
+cd aplikasi-keuangan
 
-## Contributing
+2. Instal Dependensi
+Instal paket-paket PHP dan Node.js yang dibutuhkan.
+Bash
+composer install
+npm install
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Konfigurasi Lingkungan
+Buat salinan file .env.example dan ubah namanya menjadi .env.
+Bash
+cp .env.example .env
+Atur detail koneksi database Anda di file .env.
+Jalankan perintah untuk menghasilkan APP_KEY.
+Bash
+php artisan key:generate
 
-## Code of Conduct
+4. Migrasi dan Seeding Database
+Jalankan migrasi untuk membuat tabel-tabel database dan tambahkan data awal kategori.
+Bash
+php artisan migrate
+php artisan db:seed --class=KategoriSeeder
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. Jalankan Aplikasi
+Jalankan Vite untuk mengompilasi aset CSS dan JavaScript, dan jalankan server pengembangan Laragon.
+Bash
+npm run dev
+Aplikasi Anda sekarang dapat diakses di URL yang disediakan oleh Laragon (misalnya http://aplikasi-keuangan.test).
 
-## Security Vulnerabilities
+👨‍💻 Penggunaan
+Registrasi: Buat akun baru di halaman /register.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Login: Masuk ke aplikasi menggunakan akun yang sudah terdaftar.
 
-## License
+Atur Saldo Awal: Setelah login, Anda akan diminta untuk mengatur saldo awal Anda.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Mulai Mencatat: Gunakan menu navigasi untuk mulai mencatat pemasukan dan pengeluaran Anda.
+
+📄 Lisensi
+Proyek ini dilisensikan di bawah Lisensi MIT (MIT License). Lihat file LICENSE untuk detailnya.
+
+Setelah Anda membuat file `README.md` dan menempelkan isinya, jangan lupa untuk mengunggahnya ke GitHub dengan perintah berikut:
+bash
+git add README.md
+git commit -m "Add README file with license and icons"
+git push origin main
+
+Nama Pengembang
+Bara Kusuma
+
